@@ -1,0 +1,1 @@
+../../wp-plugin/wp-content/plugins/cloudwarecity-auth/readme.txt
