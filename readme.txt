@@ -34,6 +34,9 @@ If you receive an error 'Malformed authentication - missing id' please ensure yo
 
 Active Cloudware City users that attempt log in may receive one of two errors (other than invalid password) - "Subscription has expired" (for users with expired subscriptions), and "Subscription is required" (for users that have not yet subscribed).
 
+= I can't get it working with my product =
+Make sure your product is a 'Full' listing product - 'Basic' listing products are not API-enabled. Also if you are testing, please tick the 'Test mode' and use your own Cloudware City username/password to test. Finally, ensure you are testing against the correct server as above.
+
 = If I disable the plugin, how will I log in? =
 The plugin only creates and updates existing accounts, it doesn't alter any passwords, therefore you can still authenticate using your admin username and password. In addition, user accounts created or updated via Cloudware City authentication will continue to function (although no access control or subscription expiration facilities will be available once the plugin is disabled).
 
