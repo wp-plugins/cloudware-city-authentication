@@ -4,7 +4,7 @@ Donate link: none
 Tags: authentication, register, subscription, login, membership, restrict, access, cms
 Requires at least: 3.0
 Tested up to: 3.1
-Stable tag: trunk
+Stable tag: 1.01
 
 A plugin for authentication/authorisation using Cloudware City for subscription access to a WordPress installation.
 
@@ -13,8 +13,6 @@ A plugin for authentication/authorisation using Cloudware City for subscription 
 This plugin allows the use of the external Cloudware City authentication API to supplement the default authentication of users within a WordPress installation. Users are authenticated using the API then added to the local WordPress database based on the values in the plugin settings. This means existing user accounts can be used if necessary and local admin users can still be used.
 
 When used in conjunction with another plugin (e.g. Page Restrict, Members Only etc) that restricts access to logged in users, this plugin allows a subscription membership site to be set up with ease, using Cloudware City's subscription management, shopping and recurring billing facilities (full membership required as a Cloudware City Vendor).
-
-The plugin only creates and updates existing accounts, it doesn't alter any passwords, therefore you can still authenticate using your admin username and password. In addition, user accounts created or updated via Cloudware City authentication will continue to function (although no access control or subscription expiration facilities will be available) once the plugin is disabled.
 
 == Installation ==
 
