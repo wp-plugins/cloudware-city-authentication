@@ -4,7 +4,7 @@ Donate link: none
 Tags: authentication, register, subscription, login, membership, restrict, access, cms
 Requires at least: 3.0
 Tested up to: 3.1
-Stable tag: trunk
+Stable tag: 1.01
 
 A plugin for authentication/authorisation using Cloudware City for subscription access to a WordPress installation.
 
