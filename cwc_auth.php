@@ -3,7 +3,7 @@
 	Plugin Name: Cloudware City Authentication
 	Plugin URI: http://cloudwarecity.com/vendor/downloads
 	Description: Used to externally authenticate and authorise WP users using Cloudware City
-	Version: 1.0
+	Version: 1.01
 	Author: Keith Hall
 	Author URI: http://cloudwarecity.com/vendor/aboutapi
 	License: GNU General Public License (GPL) version 2
@@ -34,7 +34,7 @@
  * A class to authenticate Wordpress users using Cloudware City
  *
  * @author Keith Hall
- * @version 1.0
+ * @version 1.01
  * @todo Add the ability to handle multiple product IDs
  */
 class Cloudware_Auth
@@ -364,6 +364,7 @@ class Cloudware_Auth
 							$message = 'Subscription is required';
 							break;
 						case "EXPIRED";
+							$username = NULL; // explicitly deny login always if expired
 							$message = "Subscription has expired";
 							break;
 						case "OK";
@@ -416,11 +417,13 @@ class Cloudware_Auth
 			}
 			else
 			{
-				if(!username_exists($username))
+				# if failed auth and username doesn't exist in WP database, report the Cloudware City authentication failure alone and deny login (set username to NULL)...
+				# otherwise let WordPress handle the authentication (allows WP accounts to be used to override Cloudware City authentication failures except for expirations)
+				global $error_msg;
+				$error_msg = $message;
+				if(!username_exists($username)) 
 				{
 					$username = NULL;
-					global $error_msg;
-					$error_msg = $message;
 					global $error_type;
 					$error_type = "noauth";
 				}
@@ -513,12 +516,17 @@ class Cloudware_Auth
 	 *
 	 * Disables the password reset option in WP when this plugin is enabled because
 	 * this should be handled by the Cloudware City system and not the wordpress system
+	 * v1.01 - Enables password field for admin users.
 	 *
 	 * @return
 	 */
 	function cwc_show_password_fields()
 	{
-		return 0;
+		global $wp_roles;
+		if(current_user_can('edit_users'))
+			return 1;
+		else
+			return 0;
 	}
 
 	/**
